@@ -45,8 +45,8 @@ const Navbar = () => {
             <Link to="/contact" className="text-lvtc-dark-gray hover:text-lvtc-forest-green transition-colors">
               Contact
             </Link>
-            <Button className="bg-lvtc-forest-green hover:bg-lvtc-light-green text-white">
-              Apply Now
+            <Button className="bg-lvtc-forest-green hover:bg-lvtc-light-green text-white" asChild>
+              <Link to="/apply">Apply Now</Link>
             </Button>
           </div>
           
@@ -97,8 +97,8 @@ const Navbar = () => {
               >
                 Contact
               </Link>
-              <Button className="bg-lvtc-forest-green hover:bg-lvtc-light-green text-white w-full">
-                Apply Now
+              <Button className="bg-lvtc-forest-green hover:bg-lvtc-light-green text-white w-full" asChild>
+                <Link to="/apply">Apply Now</Link>
               </Button>
             </div>
           </div>

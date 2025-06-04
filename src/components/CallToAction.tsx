@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
 const CallToAction = () => {
@@ -13,8 +14,8 @@ const CallToAction = () => {
           Join Lodwar Vocational Training Centre and gain practical skills that lead to employment and entrepreneurship opportunities.
         </p>
         <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-          <Button size="lg" className="bg-white text-lvtc-forest-green hover:bg-lvtc-pale-green">
-            Apply Now
+          <Button size="lg" className="bg-white text-lvtc-forest-green hover:bg-lvtc-pale-green" asChild>
+            <Link to="/apply">Apply Now</Link>
           </Button>
           <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-lvtc-forest-green">
             Download Brochure
