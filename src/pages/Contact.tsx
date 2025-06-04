@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -109,7 +108,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold mb-1">Phone</h3>
-                    <p className="text-gray-700">0778777886</p>
+                    <p className="text-gray-700">0716911279</p>
                   </div>
                 </div>
                 

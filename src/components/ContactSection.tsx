@@ -85,7 +85,7 @@ const ContactSection = () => {
                   <Phone className="h-6 w-6 mr-3" />
                   <div>
                     <p className="font-medium">Phone</p>
-                    <p>0778777886</p>
+                    <p>0716911279</p>
                   </div>
                 </div>
                 <div className="flex items-center">
