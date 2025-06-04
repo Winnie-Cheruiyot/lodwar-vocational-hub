@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Navbar from '@/components/Navbar';
@@ -32,14 +31,51 @@ const Apply = () => {
     setIsSubmitting(true);
     console.log('Application submitted:', data);
     
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      // Create email body with application details
+      const emailBody = `
+New Application Received for Lodwar Vocational Training Centre
+
+Student Information:
+- Name: ${data.firstName} ${data.lastName}
+- Email: ${data.email}
+- Phone: ${data.phone}
+- Date of Birth: ${data.dateOfBirth}
+- Gender: ${data.gender}
+- Address: ${data.address}
+
+Course Information:
+- Preferred Course: ${data.course}
+
+Educational Background:
+${data.education || 'Not provided'}
+
+Previous Experience:
+${data.experience || 'Not provided'}
+
+Application submitted on: ${new Date().toLocaleString()}
+      `.trim();
+
+      // Create mailto link
+      const mailtoLink = `mailto:plodwaryouth@yahoo.com?subject=New Application - ${data.firstName} ${data.lastName}&body=${encodeURIComponent(emailBody)}`;
+      
+      // Open default email client
+      window.location.href = mailtoLink;
+      
       toast({
         title: "Application Submitted Successfully!",
-        description: "We will contact you within 2-3 business days regarding your application.",
+        description: "Your default email client will open to send the application details to LVTC.",
       });
+    } catch (error) {
+      console.error('Error processing application:', error);
+      toast({
+        title: "Error",
+        description: "There was an error processing your application. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 2000);
+    }
   };
 
   const courses = [

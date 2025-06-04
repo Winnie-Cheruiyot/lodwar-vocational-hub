@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -115,7 +114,7 @@ const About = () => {
         </div>
       </section>
       
-      {/* Our Team Section */}
+      {/* Our Team Section with updated leadership */}
       <section className="py-16 bg-lvtc-off-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -128,19 +127,19 @@ const About = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                name: "John Lokichar",
+                name: "Mr. Abraham Chegem",
                 position: "Principal",
-                bio: "With over 20 years in technical education, John brings leadership and vision to LVTC."
+                bio: "With over 10 years in technical education, Mr. Chegem brings leadership and vision to LVTC."
               },
               {
-                name: "Mary Ekai",
-                position: "Deputy Principal, Academics",
-                bio: "Mary oversees curriculum development and ensures high-quality teaching standards."
+                name: "Mr. Haron Aiyen",
+                position: "Deputy Principal",
+                bio: "Mr. Aiyen manages the day-to-day operations and facilities of the institution."
               },
               {
-                name: "Peter Eregae",
-                position: "Deputy Principal, Administration",
-                bio: "Peter manages the day-to-day operations and facilities of the institution."
+                name: "Ms. Winnie Cheruiyot",
+                position: "Director of Studies (D.O.S)",
+                bio: "Ms. Cheruiyot oversees curriculum development and ensures high-quality teaching standards."
               }
             ].map((member, index) => (
               <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">

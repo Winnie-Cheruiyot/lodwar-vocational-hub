@@ -11,7 +11,7 @@ const testimonials = [
   },
   {
     quote: "LVTC changed my life. The instructors were supportive and knowledgeable. Now I work as a head chef at a major hotel in Nairobi.",
-    name: "Sarah Nakuru",
+    name: "Sarah Ajikon",
     position: "Head Chef, Royal Grand Hotel",
     course: "Food and Beverage Processing",
     year: "2018"
