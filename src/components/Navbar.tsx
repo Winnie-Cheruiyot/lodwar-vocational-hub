@@ -42,6 +42,9 @@ const Navbar = () => {
             <Link to="/facilities" className="text-lvtc-dark-gray hover:text-lvtc-forest-green transition-colors">
               Facilities
             </Link>
+            <Link to="/events" className="text-lvtc-dark-gray hover:text-lvtc-forest-green transition-colors">
+              Events
+            </Link>
             <Link to="/contact" className="text-lvtc-dark-gray hover:text-lvtc-forest-green transition-colors">
               Contact
             </Link>
@@ -89,6 +92,13 @@ const Navbar = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Facilities
+              </Link>
+              <Link 
+                to="/events" 
+                className="text-lvtc-dark-gray hover:bg-lvtc-pale-green px-4 py-2 rounded-md"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Events
               </Link>
               <Link 
                 to="/contact" 
