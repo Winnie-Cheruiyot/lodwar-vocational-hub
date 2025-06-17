@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -36,7 +35,7 @@ const Events = () => {
   const pastEvents = [
     {
       title: "JICA Visit - Water Experts Capacity Building",
-      date: "2024-11-15",
+      date: "2025-11-15",
       time: "10:00 AM - 3:00 PM",
       location: "Electrical & Plumbing Workshops",
       description: "Japan International Cooperation Agency (JICA) visited our electrical and plumbing workshops in preparation for rolling out capacity building programs for water experts in water companies.",
@@ -45,7 +44,7 @@ const Events = () => {
     },
     {
       title: "Guidance and Counselling Workshop",
-      date: "2024-10-10",
+      date: "2025-10-10",
       time: "9:00 AM - 4:00 PM",
       location: "Conference Hall",
       description: "Professional development workshop for students on career guidance, personal development, and mental health awareness.",
@@ -54,7 +53,7 @@ const Events = () => {
     },
     {
       title: "Marketing and Outreach Program",
-      date: "2024-09-25",
+      date: "2025-09-25",
       time: "8:00 AM - 6:00 PM",
       location: "Community Centers",
       description: "Students and staff engaged in community outreach to promote vocational training opportunities and showcase our programs.",
