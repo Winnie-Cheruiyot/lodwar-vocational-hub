@@ -1,10 +1,10 @@
-
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import CallToAction from '@/components/CallToAction';
 import { Car, Plug, Wrench, Computer, ChefHat, Scissors, Pen, School, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const coursesData = [
   {
@@ -12,70 +12,80 @@ const coursesData = [
     title: 'Motor Vehicle Mechanics',
     description: 'Learn comprehensive maintenance, repair and servicing of vehicles through hands-on training. Students work with various vehicle systems including engines, transmission, brakes, and electronic systems.',
     duration: '2 Years',
-    certificationLevel: 'Certificate / Diploma'
+    certificationLevel: 'Certificate / Diploma',
+    slug: 'motor-vehicle-mechanics'
   },
   {
     icon: <Plug className="h-10 w-10" />,
     title: 'Electrical Installation',
     description: 'Master electrical wiring, installation and maintenance in commercial and residential settings. The program covers electrical theory, safety practices, wiring methods, motor controls, and renewable energy systems.',
     duration: '2 Years',
-    certificationLevel: 'Certificate / Diploma'
+    certificationLevel: 'Certificate / Diploma',
+    slug: 'electrical-installation'
   },
   {
     icon: <Wrench className="h-10 w-10" />,
     title: 'Plumbing Technology',
     description: 'Develop skills in installing and maintaining water systems, fixtures, and appliances. Learn about water supply, drainage, plumbing materials, blueprint reading, and modern plumbing techniques.',
     duration: '2 Years',
-    certificationLevel: 'Certificate / Diploma'
+    certificationLevel: 'Certificate / Diploma',
+    slug: 'plumbing-technology'
   },
   {
     icon: <Computer className="h-10 w-10" />,
     title: 'Information Communication Technology',
     description: 'Build expertise in computer applications, networking, programming, digital media, and IT support. Students learn both theoretical knowledge and practical skills in modern computing.',
     duration: '2 Years',
-    certificationLevel: 'Certificate / Diploma'
+    certificationLevel: 'Certificate / Diploma',
+    slug: 'information-communication-technology'
   },
   {
     icon: <ChefHat className="h-10 w-10" />,
     title: 'Food and Beverage Processing',
     description: 'Learn culinary arts, food safety, beverage preparation, and hospitality management. The program provides training in professional cooking, baking, menu planning, and food service operations.',
     duration: '2 Years',
-    certificationLevel: 'Certificate / Diploma'
+    certificationLevel: 'Certificate / Diploma',
+    slug: 'food-and-beverage-processing'
   },
   {
     icon: <Scissors className="h-10 w-10" />,
     title: 'Hairdressing and Beauty Therapy',
     description: 'Master hairstyling, cosmetics application, nail care, and salon management. Students gain both practical skills and theoretical knowledge in beauty treatments and customer service.',
     duration: '2 Years',
-    certificationLevel: 'Certificate / Diploma'
+    certificationLevel: 'Certificate / Diploma',
+    slug: 'hairdressing-and-beauty-therapy'
   },
   {
     icon: <Pen className="h-10 w-10" />,
     title: 'Fashion Design and Garment Making',
     description: 'Develop skills in clothing design, pattern making, sewing, and textile production. The program covers fashion illustration, garment construction, fabric knowledge, and business skills.',
     duration: '2 Years',
-    certificationLevel: 'Certificate / Diploma'
+    certificationLevel: 'Certificate / Diploma',
+    slug: 'fashion-design-and-garment-making'
   },
   {
     icon: <School className="h-10 w-10" />,
     title: 'Masonry and Building Technology',
     description: 'Learn construction techniques, building methods, structural principles, and blueprint reading. Students get hands-on experience with various masonry materials and construction projects.',
     duration: '2 Years',
-    certificationLevel: 'Certificate / Diploma'
+    certificationLevel: 'Certificate / Diploma',
+    slug: 'masonry-and-building-technology'
   },
   {
     icon: <Wrench className="h-10 w-10" />,
     title: 'Arc Welding',
     description: 'Master various welding techniques including MIG, TIG, and stick welding. The program covers welding safety, metal properties, blueprint reading, and fabrication projects.',
     duration: '1 Year',
-    certificationLevel: 'Certificate'
+    certificationLevel: 'Certificate',
+    slug: 'arc-welding'
   },
   {
     icon: <Wrench className="h-10 w-10" />,
     title: 'Carpentry and Joinery',
     description: 'Learn woodworking techniques, furniture making, cabinet construction, and finishing methods. The program combines traditional craftsmanship with modern carpentry tools and methods.',
     duration: '2 Years',
-    certificationLevel: 'Certificate / Diploma'
+    certificationLevel: 'Certificate / Diploma',
+    slug: 'carpentry-and-joinery'
   },
 ];
 
@@ -127,9 +137,15 @@ const Courses = () => {
                       </span>
                     </div>
                     <p className="text-gray-600 mb-4">{course.description}</p>
-                    <Button className="bg-lvtc-forest-green hover:bg-lvtc-light-green text-white">
-                      Learn More
-                    </Button>
+                    {course.slug && ['motor-vehicle-mechanics', 'electrical-installation', 'plumbing-technology'].includes(course.slug) ? (
+                      <Button className="bg-lvtc-forest-green hover:bg-lvtc-light-green text-white" asChild>
+                        <Link to={`/courses/${course.slug}`}>Learn More</Link>
+                      </Button>
+                    ) : (
+                      <Button className="bg-lvtc-forest-green hover:bg-lvtc-light-green text-white">
+                        Learn More
+                      </Button>
+                    )}
                   </div>
                 </div>
               </div>
