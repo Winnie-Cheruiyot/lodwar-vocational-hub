@@ -137,7 +137,7 @@ const Courses = () => {
                       </span>
                     </div>
                     <p className="text-gray-600 mb-4">{course.description}</p>
-                    {course.slug && ['motor-vehicle-mechanics', 'electrical-installation', 'plumbing-technology'].includes(course.slug) ? (
+                    {course.slug && ['motor-vehicle-mechanics', 'electrical-installation', 'plumbing-technology', 'information-communication-technology', 'carpentry-and-joinery', 'hairdressing-and-beauty-therapy', 'arc-welding'].includes(course.slug) ? (
                       <Button className="bg-lvtc-forest-green hover:bg-lvtc-light-green text-white" asChild>
                         <Link to={`/courses/${course.slug}`}>Learn More</Link>
                       </Button>
