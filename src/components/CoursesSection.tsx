@@ -2,47 +2,56 @@
 import React from 'react';
 import { Car, Plug, Wrench, Computer, ChefHat, Scissors, Pen, School } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const coursesData = [
   {
     icon: <Car className="h-8 w-8" />,
     title: 'Motor Vehicle Mechanics',
-    description: 'Learn maintenance, repair and servicing of vehicles with hands-on training.'
+    description: 'Learn maintenance, repair and servicing of vehicles with hands-on training.',
+    slug: 'motor-vehicle-mechanics'
   },
   {
     icon: <Plug className="h-8 w-8" />,
     title: 'Electrical Installation',
-    description: 'Master electrical wiring, installation and maintenance in commercial and residential settings.'
+    description: 'Master electrical wiring, installation and maintenance in commercial and residential settings.',
+    slug: 'electrical-installation'
   },
   {
     icon: <Wrench className="h-8 w-8" />,
     title: 'Plumbing Technology',
-    description: 'Develop skills in installing and maintaining water systems, fixtures, and appliances.'
+    description: 'Develop skills in installing and maintaining water systems, fixtures, and appliances.',
+    slug: 'plumbing-technology'
   },
   {
     icon: <Computer className="h-8 w-8" />,
     title: 'Information Communication Technology',
-    description: 'Build expertise in computer applications, networking, and digital media.'
+    description: 'Build expertise in computer applications, networking, and digital media.',
+    slug: 'information-communication-technology'
   },
   {
     icon: <ChefHat className="h-8 w-8" />,
     title: 'Food and Beverage Processing',
-    description: 'Learn culinary arts, food safety, and hospitality management.'
+    description: 'Learn culinary arts, food safety, and hospitality management.',
+    slug: 'food-and-beverage-processing'
   },
   {
     icon: <Scissors className="h-8 w-8" />,
     title: 'Hairdressing and Beauty Therapy',
-    description: 'Master styling, cosmetics application, and salon management.'
+    description: 'Master styling, cosmetics application, and salon management.',
+    slug: 'hairdressing-and-beauty-therapy'
   },
   {
     icon: <Pen className="h-8 w-8" />,
     title: 'Fashion Design and Garment Making',
-    description: 'Develop skills in clothing design, pattern making, and textile production.'
+    description: 'Develop skills in clothing design, pattern making, and textile production.',
+    slug: 'fashion-design-and-garment-making'
   },
   {
     icon: <School className="h-8 w-8" />,
     title: 'Masonry and Building Technology',
-    description: 'Learn construction techniques, building methods and structural principles.'
+    description: 'Learn construction techniques, building methods and structural principles.',
+    slug: 'masonry-and-building-technology'
   }
 ];
 
@@ -74,22 +83,22 @@ const CoursesSection = () => {
               <p className="text-gray-600 mb-4">
                 {course.description}
               </p>
-              <a 
-                href={`/courses/${course.title.toLowerCase().replace(/\s+/g, '-')}`}
+              <Link 
+                to={`/courses/${course.slug}`}
                 className="text-lvtc-forest-green font-medium hover:underline inline-flex items-center"
               >
                 Learn More
                 <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
                 </svg>
-              </a>
+              </Link>
             </div>
           ))}
         </div>
         
         <div className="text-center mt-12">
-          <Button className="bg-lvtc-forest-green hover:bg-lvtc-light-green text-white">
-            View All Courses
+          <Button className="bg-lvtc-forest-green hover:bg-lvtc-light-green text-white" asChild>
+            <Link to="/courses">View All Courses</Link>
           </Button>
         </div>
       </div>

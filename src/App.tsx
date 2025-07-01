@@ -12,6 +12,9 @@ import Contact from "./pages/Contact";
 import Apply from "./pages/Apply";
 import Events from "./pages/Events";
 import NotFound from "./pages/NotFound";
+import MotorVehicleMechanics from "./pages/courses/MotorVehicleMechanics";
+import ElectricalInstallation from "./pages/courses/ElectricalInstallation";
+import PlumbingTechnology from "./pages/courses/PlumbingTechnology";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +28,9 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
           <Route path="/courses" element={<Courses />} />
+          <Route path="/courses/motor-vehicle-mechanics" element={<MotorVehicleMechanics />} />
+          <Route path="/courses/electrical-installation" element={<ElectricalInstallation />} />
+          <Route path="/courses/plumbing-technology" element={<PlumbingTechnology />} />
           <Route path="/facilities" element={<Facilities />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/apply" element={<Apply />} />
