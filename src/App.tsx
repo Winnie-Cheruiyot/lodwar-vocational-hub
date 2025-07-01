@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Index from './pages/Index';
@@ -16,6 +15,7 @@ import InformationCommunicationTechnology from './pages/courses/InformationCommu
 import CarpentryAndJoinery from './pages/courses/CarpentryAndJoinery';
 import HairdressingAndBeautyTherapy from './pages/courses/HairdressingAndBeautyTherapy';
 import ArcWelding from './pages/courses/ArcWelding';
+import FashionDesignAndGarmentMaking from './pages/courses/FashionDesignAndGarmentMaking';
 import { Toaster } from 'sonner';
 
 function App() {
@@ -34,6 +34,7 @@ function App() {
           <Route path="/courses/carpentry-and-joinery" element={<CarpentryAndJoinery />} />
           <Route path="/courses/hairdressing-and-beauty-therapy" element={<HairdressingAndBeautyTherapy />} />
           <Route path="/courses/arc-welding" element={<ArcWelding />} />
+          <Route path="/courses/fashion-design-and-garment-making" element={<FashionDesignAndGarmentMaking />} />
           <Route path="/facilities" element={<Facilities />} />
           <Route path="/apply" element={<Apply />} />
           <Route path="/contact" element={<Contact />} />

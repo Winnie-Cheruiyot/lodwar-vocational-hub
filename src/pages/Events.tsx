@@ -34,6 +34,33 @@ const Events = () => {
 
   const pastEvents = [
     {
+      title: "Tree Planting Ceremony",
+      date: "2025-11-20",
+      time: "9:00 AM - 1:00 PM",
+      location: "LVTC Campus Grounds",
+      description: "Environmental conservation initiative where students, staff, and community members participated in planting trees around the campus. This activity promotes environmental awareness and contributes to our green campus initiative.",
+      category: "Environmental Conservation",
+      image: "/lovable-uploads/6bf84f39-55f5-48b2-9918-9e23389a2aa4.png"
+    },
+    {
+      title: "Annual Examinations",
+      date: "2025-11-18",
+      time: "8:00 AM - 5:00 PM",
+      location: "Examination Halls",
+      description: "Students taking their annual examinations across all departments. The examination period demonstrates our commitment to maintaining high academic standards and proper assessment of student progress.",
+      category: "Academic Assessment",
+      image: "/lovable-uploads/62ec05ea-e1fa-4932-87bd-021456ee87e4.png"
+    },
+    {
+      title: "Educational Trip to Eliye Springs",
+      date: "2025-11-10",
+      time: "6:00 AM - 8:00 PM",
+      location: "Lake Turkana - Eliye Springs",
+      description: "Students and staff enjoyed an educational and recreational trip to the beautiful Eliye Springs at Lake Turkana. This trip provided students with exposure to tourism potential in the region while offering relaxation and team building opportunities.",
+      category: "Educational Trip",
+      image: "/lovable-uploads/f06c8788-3fbd-4d0b-a6c5-4cb98288772b.png"
+    },
+    {
       title: "JICA Visit - Water Experts Capacity Building",
       date: "2025-11-15",
       time: "10:00 AM - 3:00 PM",
@@ -41,6 +68,15 @@ const Events = () => {
       description: "Japan International Cooperation Agency (JICA) visited our electrical and plumbing workshops in preparation for rolling out capacity building programs for water experts in water companies.",
       category: "International Partnership",
       image: "/lovable-uploads/4e0ae8b4-0381-468e-aba8-03e9dc9aee18.png"
+    },
+    {
+      title: "Community Tree Planting Initiative",
+      date: "2025-10-25",
+      time: "8:00 AM - 2:00 PM",
+      location: "Various Community Sites",
+      description: "Extended tree planting program where LVTC community participated in environmental conservation efforts across different locations. The initiative involved proper tree planting techniques and community engagement.",
+      category: "Community Outreach",
+      image: "/lovable-uploads/47c8e222-49ec-4eec-b9c0-f3c4b3c2d8f3.png"
     },
     {
       title: "Guidance and Counselling Workshop",
