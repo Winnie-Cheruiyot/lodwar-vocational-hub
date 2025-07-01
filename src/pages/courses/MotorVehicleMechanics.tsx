@@ -52,7 +52,7 @@ const MotorVehicleMechanics = () => {
             </div>
             <div>
               <img 
-                src="/lovable-uploads/4970702d-6b3e-472d-b645-48d1324380bb.png" 
+                src="/lovable-uploads/9c82f209-63f9-4c3a-a6bd-6d5c82735eb1.png" 
                 alt="Motor Vehicle Mechanics Workshop"
                 className="w-full h-64 object-cover rounded-lg shadow-md"
               />
@@ -61,8 +61,50 @@ const MotorVehicleMechanics = () => {
         </div>
       </section>
       
-      {/* What You'll Learn */}
+      {/* Workshop Gallery */}
       <section className="py-16 bg-lvtc-off-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-lvtc-forest-green text-center mb-12">Our Workshop Facilities</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="bg-white rounded-lg overflow-hidden shadow-md">
+              <img 
+                src="/lovable-uploads/9c82f209-63f9-4c3a-a6bd-6d5c82735eb1.png" 
+                alt="Vehicle Workshop"
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-4">
+                <h3 className="font-semibold text-lvtc-forest-green mb-2">Modern Workshop</h3>
+                <p className="text-gray-600 text-sm">State-of-the-art equipment for practical training</p>
+              </div>
+            </div>
+            <div className="bg-white rounded-lg overflow-hidden shadow-md">
+              <img 
+                src="/lovable-uploads/2bab7e69-2051-45f2-a121-9a83b78cd712.png" 
+                alt="Students in Workshop"
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-4">
+                <h3 className="font-semibold text-lvtc-forest-green mb-2">Hands-on Learning</h3>
+                <p className="text-gray-600 text-sm">Students working on real automotive projects</p>
+              </div>
+            </div>
+            <div className="bg-white rounded-lg overflow-hidden shadow-md">
+              <img 
+                src="/lovable-uploads/5e18c74a-54a7-4d18-ae90-8b37152d9755.png" 
+                alt="Safety Training"
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-4">
+                <h3 className="font-semibold text-lvtc-forest-green mb-2">Safety First</h3>
+                <p className="text-gray-600 text-sm">Comprehensive safety training and protocols</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* What You'll Learn */}
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-lvtc-forest-green text-center mb-12">What You'll Learn</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -77,7 +119,7 @@ const MotorVehicleMechanics = () => {
               "Customer Service Skills",
               "Workshop Management"
             ].map((skill, index) => (
-              <div key={index} className="bg-white rounded-lg p-4 shadow-sm">
+              <div key={index} className="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
                 <div className="flex items-center">
                   <div className="w-2 h-2 bg-lvtc-forest-green rounded-full mr-3"></div>
                   <span className="text-gray-700">{skill}</span>

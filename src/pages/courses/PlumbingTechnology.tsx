@@ -52,7 +52,7 @@ const PlumbingTechnology = () => {
             </div>
             <div>
               <img 
-                src="/lovable-uploads/4970702d-6b3e-472d-b645-48d1324380bb.png" 
+                src="/lovable-uploads/e81afff6-28a1-4d74-9ea2-705a2bd140f8.png" 
                 alt="Plumbing Technology Workshop"
                 className="w-full h-64 object-cover rounded-lg shadow-md"
               />
@@ -61,8 +61,50 @@ const PlumbingTechnology = () => {
         </div>
       </section>
       
-      {/* What You'll Learn */}
+      {/* Workshop Gallery */}
       <section className="py-16 bg-lvtc-off-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-lvtc-forest-green text-center mb-12">Our Plumbing Workshop</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="bg-white rounded-lg overflow-hidden shadow-md">
+              <img 
+                src="/lovable-uploads/e81afff6-28a1-4d74-9ea2-705a2bd140f8.png" 
+                alt="Plumbing Installation Training"
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-4">
+                <h3 className="font-semibold text-lvtc-forest-green mb-2">Installation Training</h3>
+                <p className="text-gray-600 text-sm">Hands-on training with real plumbing fixtures</p>
+              </div>
+            </div>
+            <div className="bg-white rounded-lg overflow-hidden shadow-md">
+              <img 
+                src="/lovable-uploads/54196044-b1e5-460d-a94f-dc10f6205637.png" 
+                alt="Plumbing Tools and Equipment"
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-4">
+                <h3 className="font-semibold text-lvtc-forest-green mb-2">Professional Tools</h3>
+                <p className="text-gray-600 text-sm">Modern plumbing tools and equipment</p>
+              </div>
+            </div>
+            <div className="bg-white rounded-lg overflow-hidden shadow-md">
+              <img 
+                src="/lovable-uploads/2bab7e69-2051-45f2-a121-9a83b78cd712.png" 
+                alt="Student Learning"
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-4">
+                <h3 className="font-semibold text-lvtc-forest-green mb-2">Practical Learning</h3>
+                <p className="text-gray-600 text-sm">Students learning practical plumbing skills</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* What You'll Learn */}
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-lvtc-forest-green text-center mb-12">What You'll Learn</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -77,7 +119,7 @@ const PlumbingTechnology = () => {
               "Water Heating Systems",
               "Business Skills"
             ].map((skill, index) => (
-              <div key={index} className="bg-white rounded-lg p-4 shadow-sm">
+              <div key={index} className="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
                 <div className="flex items-center">
                   <div className="w-2 h-2 bg-lvtc-forest-green rounded-full mr-3"></div>
                   <span className="text-gray-700">{skill}</span>
