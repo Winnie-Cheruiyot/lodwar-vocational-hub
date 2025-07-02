@@ -53,7 +53,7 @@ const FashionDesignAndGarmentMaking = () => {
             </div>
             <div>
               <img 
-                src="/lovable-uploads/6da9f614-375d-42d7-a0ba-d9c081371f01.png" 
+                src="/lovable-uploads/8e97bfc1-277f-476d-8951-15725421c73c.png" 
                 alt="Fashion Design Workshop"
                 className="w-full h-64 object-cover rounded-lg shadow-md"
               />
@@ -69,7 +69,7 @@ const FashionDesignAndGarmentMaking = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="bg-white rounded-lg overflow-hidden shadow-md">
               <img 
-                src="/lovable-uploads/6da9f614-375d-42d7-a0ba-d9c081371f01.png" 
+                src="/lovable-uploads/8e97bfc1-277f-476d-8951-15725421c73c.png" 
                 alt="Fashion Design Workshop"
                 className="w-full h-48 object-cover"
               />

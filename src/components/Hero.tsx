@@ -34,6 +34,18 @@ const Hero = () => {
     {
       src: "/lovable-uploads/5e7cd338-64d6-4b98-9a1c-2d18541d4aad.png",
       alt: "Skills Training and Development"
+    },
+    {
+      src: "/lovable-uploads/f6b974c3-5320-4002-91c2-13b340ca8563.png",
+      alt: "Engineering Department Training"
+    },
+    {
+      src: "/lovable-uploads/e4cdb2f0-3d77-4dc7-80a7-a48ea01637f0.png",
+      alt: "Graduation Ceremony"
+    },
+    {
+      src: "/lovable-uploads/42f358dc-b5f5-4a25-8803-2345f863dfd8.png",
+      alt: "Catering and Food Preparation"
     }
   ];
 
