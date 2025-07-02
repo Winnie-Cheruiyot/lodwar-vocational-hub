@@ -13,7 +13,7 @@ const facilitiesData = [
   {
     title: "ICT Lab",
     description: "State-of-the-art computer lab with latest software for practical ICT training.",
-    image: "/lovable-uploads/32aef7f1-4ac8-4dce-aa48-4b0b91d9dedc.png"
+    image: "/lovable-uploads/e10e5cd4-5f45-4b46-a5da-14f0a6ba0f70.png"
   },
   {
     title: "Culinary Kitchen",

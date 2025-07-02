@@ -139,12 +139,21 @@ const About = () => {
               {
                 name: "Ms. Winnie Cheruiyot",
                 position: "Director of Studies (D.O.S)",
-                bio: "Ms. Cheruiyot oversees curriculum development and ensures high-quality teaching standards."
+                bio: "Ms. Cheruiyot oversees curriculum development and ensures high-quality teaching standards.",
+                image: "/lovable-uploads/4892ed0b-f5b6-4678-806f-e21cfd28b218.png"
               }
             ].map((member, index) => (
               <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
                 <div className="h-48 bg-lvtc-light-green flex items-center justify-center">
-                  <Users className="h-24 w-24 text-white" />
+                  {member.image ? (
+                    <img 
+                      src={member.image} 
+                      alt={member.name}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <Users className="h-24 w-24 text-white" />
+                  )}
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-lvtc-forest-green mb-1">{member.name}</h3>
