@@ -68,9 +68,10 @@ const Hero = () => {
                 <img 
                   src={image.src} 
                   alt={image.alt}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-center"
+                  style={{ minHeight: "100vh" }}
                 />
-                <div className="absolute inset-0 bg-black/50"></div>
+                <div className="absolute inset-0 bg-black/40"></div>
               </div>
             </CarouselItem>
           ))}
