@@ -46,6 +46,10 @@ const Hero = () => {
     {
       src: "/lovable-uploads/42f358dc-b5f5-4a25-8803-2345f863dfd8.png",
       alt: "Catering and Food Preparation"
+    },
+    {
+      src: "/lovable-uploads/cd98be64-4cf1-4749-9db2-9664668388a8.png",
+      alt: "Training Seminar and Professional Development"
     }
   ];
 
