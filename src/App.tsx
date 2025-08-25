@@ -8,6 +8,7 @@ import Apply from './pages/Apply';
 import Contact from './pages/Contact';
 import Events from './pages/Events';
 import NotFound from './pages/NotFound';
+import Tenders from './pages/Tenders';
 import MotorVehicleMechanics from './pages/courses/MotorVehicleMechanics';
 import ElectricalInstallation from './pages/courses/ElectricalInstallation';
 import PlumbingTechnology from './pages/courses/PlumbingTechnology';
@@ -41,6 +42,7 @@ function App() {
           <Route path="/apply" element={<Apply />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/events" element={<Events />} />
+          <Route path="/tenders" element={<Tenders />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -45,6 +45,9 @@ const Navbar = () => {
             <Link to="/events" className="text-lvtc-dark-gray hover:text-lvtc-forest-green transition-colors">
               Events
             </Link>
+            <Link to="/tenders" className="text-lvtc-dark-gray hover:text-lvtc-forest-green transition-colors">
+              Tenders
+            </Link>
             <Link to="/contact" className="text-lvtc-dark-gray hover:text-lvtc-forest-green transition-colors">
               Contact
             </Link>
@@ -99,6 +102,13 @@ const Navbar = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Events
+              </Link>
+              <Link 
+                to="/tenders" 
+                className="text-lvtc-dark-gray hover:bg-lvtc-pale-green px-4 py-2 rounded-md"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Tenders
               </Link>
               <Link 
                 to="/contact" 
