@@ -18,6 +18,7 @@ import HairdressingAndBeautyTherapy from './pages/courses/HairdressingAndBeautyT
 import ArcWelding from './pages/courses/ArcWelding';
 import FashionDesignAndGarmentMaking from './pages/courses/FashionDesignAndGarmentMaking';
 import FoodAndBeverageProcessing from './pages/courses/FoodAndBeverageProcessing';
+import MasonryAndBuildingTechnology from './pages/courses/MasonryAndBuildingTechnology';
 import { Toaster } from 'sonner';
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
           <Route path="/courses/arc-welding" element={<ArcWelding />} />
           <Route path="/courses/fashion-design-and-garment-making" element={<FashionDesignAndGarmentMaking />} />
           <Route path="/courses/food-and-beverage-processing" element={<FoodAndBeverageProcessing />} />
+          <Route path="/courses/masonry-and-building-technology" element={<MasonryAndBuildingTechnology />} />
           <Route path="/facilities" element={<Facilities />} />
           <Route path="/apply" element={<Apply />} />
           <Route path="/contact" element={<Contact />} />
