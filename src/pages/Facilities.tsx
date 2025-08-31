@@ -3,6 +3,7 @@ import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import CallToAction from '@/components/CallToAction';
+import ScrollNavigation from '@/components/ScrollNavigation';
 
 const facilitiesData = [
   {
@@ -38,12 +39,15 @@ const facilitiesData = [
 ];
 
 const Facilities = () => {
+  const sections = ['hero', 'facilities', 'services', 'tour'];
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
+      <ScrollNavigation sections={sections} />
       
       {/* Hero Section */}
-      <div className="bg-lvtc-forest-green py-16">
+      <div id="hero" className="bg-lvtc-forest-green py-16">
         <div className="container mx-auto px-4">
           <h1 className="text-3xl md:text-5xl font-bold text-white text-center">Our Facilities</h1>
           <p className="text-lg text-white/90 text-center mt-4 max-w-2xl mx-auto">
@@ -53,7 +57,7 @@ const Facilities = () => {
       </div>
       
       {/* Facilities Overview */}
-      <section className="py-16 bg-white">
+      <section id="facilities" className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-lvtc-forest-green mb-4">Training Facilities</h2>
@@ -83,7 +87,7 @@ const Facilities = () => {
       </section>
       
       {/* Student Services */}
-      <section className="py-16 bg-lvtc-off-white">
+      <section id="services" className="py-16 bg-lvtc-off-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-lvtc-forest-green mb-4">Student Services</h2>
@@ -121,7 +125,7 @@ const Facilities = () => {
       </section>
       
       {/* Facility Tour */}
-      <section className="py-16 bg-lvtc-forest-green">
+      <section id="tour" className="py-16 bg-lvtc-forest-green">
         <div className="container mx-auto px-4">
           <div className="text-center text-white mb-12">
             <h2 className="text-3xl font-bold mb-4">Schedule a Campus Tour</h2>

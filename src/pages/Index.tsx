@@ -9,10 +9,12 @@ import GallerySection from '@/components/GallerySection';
 import ContactSection from '@/components/ContactSection';
 import CallToAction from '@/components/CallToAction';
 import Footer from '@/components/Footer';
+import ScrollNavigation from '@/components/ScrollNavigation';
 
 const Index = () => {
   return (
     <div className="min-h-screen flex flex-col">
+      <ScrollNavigation />
       <Navbar />
       <Hero />
       <StatsSection />

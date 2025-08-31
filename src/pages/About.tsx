@@ -2,15 +2,19 @@ import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import CallToAction from '@/components/CallToAction';
+import ScrollNavigation from '@/components/ScrollNavigation';
 import { GraduationCap, Users, Book, Target, Award, Heart, Lightbulb } from 'lucide-react';
 
 const About = () => {
+  const sections = ['hero', 'story', 'mission', 'values', 'leadership'];
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
+      <ScrollNavigation sections={sections} />
       
       {/* Hero Section with Visual Elements */}
-      <div className="relative min-h-[70vh] bg-gradient-to-br from-primary via-primary/90 to-primary/70 overflow-hidden">
+      <div id="hero" className="relative min-h-[70vh] bg-gradient-to-br from-primary via-primary/90 to-primary/70 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-transparent"></div>
         
         {/* Decorative Shapes */}
@@ -54,7 +58,7 @@ const About = () => {
       </div>
       
       {/* Our Story Section */}
-      <section className="py-20 bg-background">
+      <section id="story" className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-16">
             <div className="inline-flex items-center bg-primary/10 rounded-full px-6 py-2 mb-6">
@@ -124,7 +128,7 @@ const About = () => {
       </section>
       
       {/* Mission & Vision Section */}
-      <section className="py-20 bg-muted/30">
+      <section id="mission" className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
@@ -189,7 +193,7 @@ const About = () => {
       </section>
       
       {/* Core Values */}
-      <section className="py-20 bg-background">
+      <section id="values" className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
@@ -259,7 +263,7 @@ const About = () => {
       </section>
       
       {/* Leadership Team */}
-      <section className="py-20 bg-muted/30">
+      <section id="leadership" className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
