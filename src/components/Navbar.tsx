@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import ThemeToggle from '@/components/ThemeToggle';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,7 +13,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white shadow-sm sticky top-0 z-50">
+    <nav className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-sm sticky top-0 z-50 border-b">
       <div className="container mx-auto px-4 py-3">
         <div className="flex justify-between items-center">
           <div className="flex items-center space-x-4">
@@ -22,7 +23,7 @@ const Navbar = () => {
               className="h-16 w-auto"
             />
             <div className="hidden md:block">
-              <Link to="/" className="text-lg font-semibold text-lvtc-forest-green">
+              <Link to="/" className="text-lg font-semibold text-primary">
                 Lodwar Vocational Training Centre
               </Link>
             </div>
@@ -30,35 +31,37 @@ const Navbar = () => {
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
-            <Link to="/" className="text-lvtc-dark-gray hover:text-lvtc-forest-green transition-colors">
+            <Link to="/" className="text-foreground hover:text-primary transition-colors">
               Home
             </Link>
-            <Link to="/about" className="text-lvtc-dark-gray hover:text-lvtc-forest-green transition-colors">
+            <Link to="/about" className="text-foreground hover:text-primary transition-colors">
               About
             </Link>
-            <Link to="/courses" className="text-lvtc-dark-gray hover:text-lvtc-forest-green transition-colors">
+            <Link to="/courses" className="text-foreground hover:text-primary transition-colors">
               Courses
             </Link>
-            <Link to="/facilities" className="text-lvtc-dark-gray hover:text-lvtc-forest-green transition-colors">
+            <Link to="/facilities" className="text-foreground hover:text-primary transition-colors">
               Facilities
             </Link>
-            <Link to="/events" className="text-lvtc-dark-gray hover:text-lvtc-forest-green transition-colors">
+            <Link to="/events" className="text-foreground hover:text-primary transition-colors">
               Events
             </Link>
-            <Link to="/tenders" className="text-lvtc-dark-gray hover:text-lvtc-forest-green transition-colors">
+            <Link to="/tenders" className="text-foreground hover:text-primary transition-colors">
               Tenders
             </Link>
-            <Link to="/contact" className="text-lvtc-dark-gray hover:text-lvtc-forest-green transition-colors">
+            <Link to="/contact" className="text-foreground hover:text-primary transition-colors">
               Contact
             </Link>
-            <Button className="bg-lvtc-forest-green hover:bg-lvtc-light-green text-white" asChild>
+            <ThemeToggle />
+            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground" asChild>
               <Link to="/apply">Apply Now</Link>
             </Button>
           </div>
           
           {/* Mobile menu button */}
-          <div className="md:hidden">
-            <Button variant="ghost" onClick={toggleMenu} className="text-lvtc-forest-green">
+          <div className="md:hidden flex items-center space-x-2">
+            <ThemeToggle />
+            <Button variant="ghost" onClick={toggleMenu} className="text-primary">
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </Button>
           </div>
@@ -70,54 +73,54 @@ const Navbar = () => {
             <div className="flex flex-col space-y-3">
               <Link 
                 to="/" 
-                className="text-lvtc-dark-gray hover:bg-lvtc-pale-green px-4 py-2 rounded-md"
+                className="text-foreground hover:bg-muted px-4 py-2 rounded-md"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
               </Link>
               <Link 
                 to="/about" 
-                className="text-lvtc-dark-gray hover:bg-lvtc-pale-green px-4 py-2 rounded-md"
+                className="text-foreground hover:bg-muted px-4 py-2 rounded-md"
                 onClick={() => setIsMenuOpen(false)}
               >
                 About
               </Link>
               <Link 
                 to="/courses" 
-                className="text-lvtc-dark-gray hover:bg-lvtc-pale-green px-4 py-2 rounded-md"
+                className="text-foreground hover:bg-muted px-4 py-2 rounded-md"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Courses
               </Link>
               <Link 
                 to="/facilities" 
-                className="text-lvtc-dark-gray hover:bg-lvtc-pale-green px-4 py-2 rounded-md"
+                className="text-foreground hover:bg-muted px-4 py-2 rounded-md"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Facilities
               </Link>
               <Link 
                 to="/events" 
-                className="text-lvtc-dark-gray hover:bg-lvtc-pale-green px-4 py-2 rounded-md"
+                className="text-foreground hover:bg-muted px-4 py-2 rounded-md"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Events
               </Link>
               <Link 
                 to="/tenders" 
-                className="text-lvtc-dark-gray hover:bg-lvtc-pale-green px-4 py-2 rounded-md"
+                className="text-foreground hover:bg-muted px-4 py-2 rounded-md"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Tenders
               </Link>
               <Link 
                 to="/contact" 
-                className="text-lvtc-dark-gray hover:bg-lvtc-pale-green px-4 py-2 rounded-md"
+                className="text-foreground hover:bg-muted px-4 py-2 rounded-md"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Contact
               </Link>
-              <Button className="bg-lvtc-forest-green hover:bg-lvtc-light-green text-white w-full" asChild>
+              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground w-full" asChild>
                 <Link to="/apply">Apply Now</Link>
               </Button>
             </div>

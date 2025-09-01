@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import CallToAction from '@/components/CallToAction';
+import CourseFilters from '@/components/CourseFilters';
+import SkeletonCard from '@/components/SkeletonCard';
+import FAQSection from '@/components/FAQSection';
+import NewsletterSignup from '@/components/NewsletterSignup';
+import ScrollNavigation from '@/components/ScrollNavigation';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Car, Plug, Wrench, Computer, ChefHat, Scissors, Pen, School, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
@@ -90,111 +96,184 @@ const coursesData = [
 ];
 
 const Courses = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [durationFilter, setDurationFilter] = useState('all');
+  const [levelFilter, setLevelFilter] = useState('all');
+  const [isLoading, setIsLoading] = useState(false);
+  
+  const heroRef = useScrollAnimation();
+  const coursesRef = useScrollAnimation();
+
+  const filteredCourses = useMemo(() => {
+    return coursesData.filter(course => {
+      const matchesSearch = course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                           course.description.toLowerCase().includes(searchTerm.toLowerCase());
+      
+      const matchesDuration = durationFilter === 'all' || 
+                             course.duration.includes(durationFilter === '1' ? '1 Year' : '2 Years');
+      
+      const matchesLevel = levelFilter === 'all' || 
+                          (levelFilter === 'certificate' && course.certificationLevel.includes('Certificate')) ||
+                          (levelFilter === 'diploma' && course.certificationLevel.includes('Diploma')) ||
+                          (levelFilter === 'both' && course.certificationLevel.includes('/'));
+      
+      return matchesSearch && matchesDuration && matchesLevel;
+    });
+  }, [searchTerm, durationFilter, levelFilter]);
+
+  const handleResetFilters = () => {
+    setSearchTerm('');
+    setDurationFilter('all');
+    setLevelFilter('all');
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
+      <ScrollNavigation />
       <Navbar />
       
       {/* Hero Section */}
-      <div className="bg-lvtc-forest-green py-16">
+      <section 
+        id="hero" 
+        ref={heroRef}
+        className="bg-primary py-16 scroll-fade-in"
+      >
         <div className="container mx-auto px-4">
-          <h1 className="text-3xl md:text-5xl font-bold text-white text-center">Our Courses</h1>
-          <p className="text-lg text-white/90 text-center mt-4 max-w-2xl mx-auto">
+          <h1 className="text-3xl md:text-5xl font-bold text-primary-foreground text-center">Our Courses</h1>
+          <p className="text-lg text-primary-foreground/90 text-center mt-4 max-w-2xl mx-auto">
             Discover our comprehensive range of technical and vocational programs designed to equip you with practical skills for the job market
           </p>
         </div>
-      </div>
+      </section>
       
       {/* Courses Section */}
-      <section className="py-16 bg-white">
+      <section id="courses" className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-lvtc-forest-green mb-4">Vocational Programs</h2>
-            <p className="max-w-2xl mx-auto text-gray-600">
+            <h2 className="text-3xl font-bold text-foreground mb-4">Vocational Programs</h2>
+            <p className="max-w-2xl mx-auto text-muted-foreground">
               Our courses are designed with industry input to ensure graduates possess relevant skills that meet employer needs and enhance entrepreneurial opportunities.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {coursesData.map((course, index) => (
-              <div 
-                key={index} 
-                className="bg-lvtc-off-white rounded-lg shadow-md overflow-hidden border border-gray-100"
-              >
-                <div className="flex flex-col md:flex-row">
-                  <div className="bg-lvtc-forest-green text-white p-6 flex items-center justify-center md:w-1/4">
-                    <div className="w-20 h-20 flex items-center justify-center">
-                      {course.icon}
+          <CourseFilters
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            durationFilter={durationFilter}
+            setDurationFilter={setDurationFilter}
+            levelFilter={levelFilter}
+            setLevelFilter={setLevelFilter}
+            onReset={handleResetFilters}
+          />
+          
+          <div 
+            ref={coursesRef}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-8 scroll-fade-in"
+          >
+            {isLoading ? (
+              Array.from({ length: 6 }).map((_, index) => (
+                <SkeletonCard key={index} />
+              ))
+            ) : (
+              filteredCourses.map((course, index) => (
+                <div 
+                  key={index} 
+                  className="bg-card rounded-lg shadow-md overflow-hidden border hover-lift"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <div className="flex flex-col md:flex-row">
+                    <div className="bg-primary text-primary-foreground p-6 flex items-center justify-center md:w-1/4">
+                      <div className="w-20 h-20 flex items-center justify-center">
+                        {course.icon}
+                      </div>
                     </div>
-                  </div>
-                  <div className="p-6 md:w-3/4">
-                    <h3 className="text-xl font-bold text-lvtc-forest-green mb-2">{course.title}</h3>
-                    <div className="flex flex-wrap gap-3 mb-3">
-                      <span className="bg-lvtc-pale-green text-lvtc-forest-green text-sm font-medium py-1 px-3 rounded-full">
-                        Duration: {course.duration}
-                      </span>
-                      <span className="bg-lvtc-pale-green text-lvtc-forest-green text-sm font-medium py-1 px-3 rounded-full">
-                        {course.certificationLevel}
-                      </span>
+                    <div className="p-6 md:w-3/4">
+                      <h3 className="text-xl font-bold text-foreground mb-2">{course.title}</h3>
+                      <div className="flex flex-wrap gap-3 mb-3">
+                        <span className="bg-primary/10 text-primary text-sm font-medium py-1 px-3 rounded-full">
+                          Duration: {course.duration}
+                        </span>
+                        <span className="bg-primary/10 text-primary text-sm font-medium py-1 px-3 rounded-full">
+                          {course.certificationLevel}
+                        </span>
+                      </div>
+                      <p className="text-muted-foreground mb-4">{course.description}</p>
+                      {course.slug && ['motor-vehicle-mechanics', 'electrical-installation', 'plumbing-technology', 'information-communication-technology', 'carpentry-and-joinery', 'hairdressing-and-beauty-therapy', 'arc-welding', 'fashion-design-and-garment-making', 'food-and-beverage-processing', 'masonry-and-building-technology'].includes(course.slug) ? (
+                        <Button className="bg-primary hover:bg-primary/90 text-primary-foreground" asChild>
+                          <Link to={`/courses/${course.slug}`}>Learn More</Link>
+                        </Button>
+                      ) : (
+                        <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">
+                          Learn More
+                        </Button>
+                      )}
                     </div>
-                    <p className="text-gray-600 mb-4">{course.description}</p>
-                    {course.slug && ['motor-vehicle-mechanics', 'electrical-installation', 'plumbing-technology', 'information-communication-technology', 'carpentry-and-joinery', 'hairdressing-and-beauty-therapy', 'arc-welding', 'fashion-design-and-garment-making', 'food-and-beverage-processing', 'masonry-and-building-technology'].includes(course.slug) ? (
-                      <Button className="bg-lvtc-forest-green hover:bg-lvtc-light-green text-white" asChild>
-                        <Link to={`/courses/${course.slug}`}>Learn More</Link>
-                      </Button>
-                    ) : (
-                      <Button className="bg-lvtc-forest-green hover:bg-lvtc-light-green text-white">
-                        Learn More
-                      </Button>
-                    )}
                   </div>
                 </div>
-              </div>
-            ))}
+              ))
+            )}
+          </div>
+          
+          {filteredCourses.length === 0 && !isLoading && (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground text-lg">No courses found matching your criteria.</p>
+              <Button 
+                variant="outline" 
+                onClick={handleResetFilters}
+                className="mt-4"
+              >
+                Reset Filters
+              </Button>
+            </div>
+          )}
+          
+          <div className="mt-12">
+            <NewsletterSignup />
           </div>
         </div>
       </section>
       
       {/* Admission Requirements */}
-      <section className="py-16 bg-lvtc-off-white">
+      <section id="requirements" className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-lvtc-forest-green mb-4">Admission Requirements</h2>
-            <p className="max-w-2xl mx-auto text-gray-600">
+            <h2 className="text-3xl font-bold text-foreground mb-4">Admission Requirements</h2>
+            <p className="max-w-2xl mx-auto text-muted-foreground">
               Our programs are accessible to students with various educational backgrounds
             </p>
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div className="bg-white rounded-lg shadow-md p-8">
-              <h3 className="text-xl font-bold text-lvtc-forest-green mb-4">Certificate Level</h3>
-              <ul className="space-y-3 text-gray-700">
+            <div className="bg-card rounded-lg shadow-md p-8 hover-lift">
+              <h3 className="text-xl font-bold text-foreground mb-4">Certificate Level</h3>
+              <ul className="space-y-3 text-muted-foreground">
                 <li className="flex items-start">
-                  <span className="bg-lvtc-pale-green rounded-full p-1 mr-3 mt-1">
-                    <svg className="w-3 h-3 text-lvtc-forest-green" fill="currentColor" viewBox="0 0 20 20">
+                  <span className="bg-primary/20 rounded-full p-1 mr-3 mt-1">
+                    <svg className="w-3 h-3 text-primary" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
                     </svg>
                   </span>
                   KCSE mean grade D+ or equivalent
                 </li>
                 <li className="flex items-start">
-                  <span className="bg-lvtc-pale-green rounded-full p-1 mr-3 mt-1">
-                    <svg className="w-3 h-3 text-lvtc-forest-green" fill="currentColor" viewBox="0 0 20 20">
+                  <span className="bg-primary/20 rounded-full p-1 mr-3 mt-1">
+                    <svg className="w-3 h-3 text-primary" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
                     </svg>
                   </span>
                   Completed application form
                 </li>
                 <li className="flex items-start">
-                  <span className="bg-lvtc-pale-green rounded-full p-1 mr-3 mt-1">
-                    <svg className="w-3 h-3 text-lvtc-forest-green" fill="currentColor" viewBox="0 0 20 20">
+                  <span className="bg-primary/20 rounded-full p-1 mr-3 mt-1">
+                    <svg className="w-3 h-3 text-primary" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
                     </svg>
                   </span>
                   Copy of national ID or birth certificate
                 </li>
                 <li className="flex items-start">
-                  <span className="bg-lvtc-pale-green rounded-full p-1 mr-3 mt-1">
-                    <svg className="w-3 h-3 text-lvtc-forest-green" fill="currentColor" viewBox="0 0 20 20">
+                  <span className="bg-primary/20 rounded-full p-1 mr-3 mt-1">
+                    <svg className="w-3 h-3 text-primary" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
                     </svg>
                   </span>
@@ -203,36 +282,36 @@ const Courses = () => {
               </ul>
             </div>
             
-            <div className="bg-white rounded-lg shadow-md p-8">
-              <h3 className="text-xl font-bold text-lvtc-forest-green mb-4">Diploma Level</h3>
-              <ul className="space-y-3 text-gray-700">
+            <div className="bg-card rounded-lg shadow-md p-8 hover-lift">
+              <h3 className="text-xl font-bold text-foreground mb-4">Diploma Level</h3>
+              <ul className="space-y-3 text-muted-foreground">
                 <li className="flex items-start">
-                  <span className="bg-lvtc-pale-green rounded-full p-1 mr-3 mt-1">
-                    <svg className="w-3 h-3 text-lvtc-forest-green" fill="currentColor" viewBox="0 0 20 20">
+                  <span className="bg-primary/20 rounded-full p-1 mr-3 mt-1">
+                    <svg className="w-3 h-3 text-primary" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
                     </svg>
                   </span>
                   KCSE mean grade C- or equivalent
                 </li>
                 <li className="flex items-start">
-                  <span className="bg-lvtc-pale-green rounded-full p-1 mr-3 mt-1">
-                    <svg className="w-3 h-3 text-lvtc-forest-green" fill="currentColor" viewBox="0 0 20 20">
+                  <span className="bg-primary/20 rounded-full p-1 mr-3 mt-1">
+                    <svg className="w-3 h-3 text-primary" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
                     </svg>
                   </span>
                   Completed application form
                 </li>
                 <li className="flex items-start">
-                  <span className="bg-lvtc-pale-green rounded-full p-1 mr-3 mt-1">
-                    <svg className="w-3 h-3 text-lvtc-forest-green" fill="currentColor" viewBox="0 0 20 20">
+                  <span className="bg-primary/20 rounded-full p-1 mr-3 mt-1">
+                    <svg className="w-3 h-3 text-primary" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
                     </svg>
                   </span>
                   Copy of national ID or birth certificate
                 </li>
                 <li className="flex items-start">
-                  <span className="bg-lvtc-pale-green rounded-full p-1 mr-3 mt-1">
-                    <svg className="w-3 h-3 text-lvtc-forest-green" fill="currentColor" viewBox="0 0 20 20">
+                  <span className="bg-primary/20 rounded-full p-1 mr-3 mt-1">
+                    <svg className="w-3 h-3 text-primary" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
                     </svg>
                   </span>
@@ -241,36 +320,36 @@ const Courses = () => {
               </ul>
             </div>
             
-            <div className="bg-white rounded-lg shadow-md p-8">
-              <h3 className="text-xl font-bold text-lvtc-forest-green mb-4">Artisan Level</h3>
-              <ul className="space-y-3 text-gray-700">
+            <div className="bg-card rounded-lg shadow-md p-8 hover-lift">
+              <h3 className="text-xl font-bold text-foreground mb-4">Artisan Level</h3>
+              <ul className="space-y-3 text-muted-foreground">
                 <li className="flex items-start">
-                  <span className="bg-lvtc-pale-green rounded-full p-1 mr-3 mt-1">
-                    <svg className="w-3 h-3 text-lvtc-forest-green" fill="currentColor" viewBox="0 0 20 20">
+                  <span className="bg-primary/20 rounded-full p-1 mr-3 mt-1">
+                    <svg className="w-3 h-3 text-primary" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
                     </svg>
                   </span>
                   KCSE certificate or equivalent
                 </li>
                 <li className="flex items-start">
-                  <span className="bg-lvtc-pale-green rounded-full p-1 mr-3 mt-1">
-                    <svg className="w-3 h-3 text-lvtc-forest-green" fill="currentColor" viewBox="0 0 20 20">
+                  <span className="bg-primary/20 rounded-full p-1 mr-3 mt-1">
+                    <svg className="w-3 h-3 text-primary" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
                     </svg>
                   </span>
                   Completed application form
                 </li>
                 <li className="flex items-start">
-                  <span className="bg-lvtc-pale-green rounded-full p-1 mr-3 mt-1">
-                    <svg className="w-3 h-3 text-lvtc-forest-green" fill="currentColor" viewBox="0 0 20 20">
+                  <span className="bg-primary/20 rounded-full p-1 mr-3 mt-1">
+                    <svg className="w-3 h-3 text-primary" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
                     </svg>
                   </span>
                   Copy of national ID or birth certificate
                 </li>
                 <li className="flex items-start">
-                  <span className="bg-lvtc-pale-green rounded-full p-1 mr-3 mt-1">
-                    <svg className="w-3 h-3 text-lvtc-forest-green" fill="currentColor" viewBox="0 0 20 20">
+                  <span className="bg-primary/20 rounded-full p-1 mr-3 mt-1">
+                    <svg className="w-3 h-3 text-primary" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
                     </svg>
                   </span>
@@ -283,18 +362,18 @@ const Courses = () => {
       </section>
       
       {/* Academic Calendar */}
-      <section className="py-16 bg-white">
+      <section id="calendar" className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-lvtc-forest-green mb-4">Academic Calendar</h2>
-            <p className="max-w-2xl mx-auto text-gray-600">
+            <h2 className="text-3xl font-bold text-foreground mb-4">Academic Calendar</h2>
+            <p className="max-w-2xl mx-auto text-muted-foreground">
               Our academic year consists of three terms with multiple intake opportunities
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="border border-lvtc-pale-green rounded-lg overflow-hidden">
-              <div className="bg-lvtc-forest-green text-white p-4 text-center">
+            <div className="border border-primary/20 rounded-lg overflow-hidden hover-lift">
+              <div className="bg-primary text-primary-foreground p-4 text-center">
                 <h3 className="text-xl font-bold">January Intake</h3>
               </div>
               <div className="p-6">
@@ -315,8 +394,8 @@ const Courses = () => {
               </div>
             </div>
             
-            <div className="border border-lvtc-pale-green rounded-lg overflow-hidden">
-              <div className="bg-lvtc-forest-green text-white p-4 text-center">
+            <div className="border border-primary/20 rounded-lg overflow-hidden hover-lift">
+              <div className="bg-primary text-primary-foreground p-4 text-center">
                 <h3 className="text-xl font-bold">May Intake</h3>
               </div>
               <div className="p-6">
@@ -337,8 +416,8 @@ const Courses = () => {
               </div>
             </div>
             
-            <div className="border border-lvtc-pale-green rounded-lg overflow-hidden">
-              <div className="bg-lvtc-forest-green text-white p-4 text-center">
+            <div className="border border-primary/20 rounded-lg overflow-hidden hover-lift">
+              <div className="bg-primary text-primary-foreground p-4 text-center">
                 <h3 className="text-xl font-bold">September Intake</h3>
               </div>
               <div className="p-6">
@@ -361,7 +440,8 @@ const Courses = () => {
           </div>
         </div>
       </section>
-      
+
+      <FAQSection />
       <CallToAction />
       <Footer />
     </div>
