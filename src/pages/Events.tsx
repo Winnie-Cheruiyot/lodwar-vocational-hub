@@ -2,9 +2,18 @@ import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import CallToAction from '@/components/CallToAction';
+import ScrollNavigation from '@/components/ScrollNavigation';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Calendar, MapPin, Clock, Users } from 'lucide-react';
 
 const Events = () => {
+  const headerRef = useScrollAnimation();
+  const upcomingRef = useScrollAnimation();
+  const pastRef = useScrollAnimation();
+  const categoriesRef = useScrollAnimation();
+  
+  const sections = ['hero', 'upcoming', 'recent', 'categories'];
+  
   const upcomingEvents = [
     {
       title: "Career Day 2025",
@@ -101,40 +110,44 @@ const Events = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
+      <ScrollNavigation sections={sections} />
       
       {/* Hero Section */}
-      <div className="bg-lvtc-forest-green py-16">
-        <div className="container mx-auto px-4">
-          <h1 className="text-3xl md:text-5xl font-bold text-white text-center">Events & Activities</h1>
-          <p className="text-lg text-white/90 text-center mt-4 max-w-2xl mx-auto">
-            Stay updated with the latest events, workshops, and activities happening at LVTC
-          </p>
+      <div id="hero" className="bg-primary py-16 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary/80"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div ref={headerRef} className="scroll-fade-in">
+            <h1 className="text-3xl md:text-5xl font-bold text-primary-foreground text-center">Events & Activities</h1>
+            <p className="text-lg text-primary-foreground/90 text-center mt-4 max-w-2xl mx-auto">
+              Stay updated with the latest events, workshops, and activities happening at LVTC
+            </p>
+          </div>
         </div>
       </div>
       
       {/* Upcoming Events */}
-      <section className="py-16 bg-white">
+      <section id="upcoming" className="py-16 bg-background">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-lvtc-forest-green mb-4">Upcoming Events</h2>
-            <p className="max-w-2xl mx-auto text-gray-600">
+          <div ref={upcomingRef} className="scroll-fade-in text-center mb-12">
+            <h2 className="text-3xl font-bold text-primary mb-4">Upcoming Events</h2>
+            <p className="max-w-2xl mx-auto text-muted-foreground">
               Mark your calendar for these exciting upcoming events and opportunities.
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {upcomingEvents.map((event, index) => (
-              <div key={index} className="bg-lvtc-off-white rounded-lg shadow-md overflow-hidden">
+              <div key={index} className="bg-card rounded-lg shadow-md overflow-hidden hover-lift">
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-3">
-                    <span className="bg-lvtc-forest-green text-white px-3 py-1 rounded-full text-sm">
+                    <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm">
                       {event.category}
                     </span>
-                    <Calendar className="h-5 w-5 text-lvtc-forest-green" />
+                    <Calendar className="h-5 w-5 text-primary" />
                   </div>
-                  <h3 className="text-xl font-bold text-lvtc-forest-green mb-3">{event.title}</h3>
+                  <h3 className="text-xl font-bold text-primary mb-3">{event.title}</h3>
                   <div className="space-y-2 mb-4">
-                    <div className="flex items-center text-gray-600">
+                    <div className="flex items-center text-muted-foreground">
                       <Calendar className="h-4 w-4 mr-2" />
                       <span>{new Date(event.date).toLocaleDateString('en-GB', { 
                         weekday: 'long', 
@@ -143,16 +156,16 @@ const Events = () => {
                         day: 'numeric' 
                       })}</span>
                     </div>
-                    <div className="flex items-center text-gray-600">
+                    <div className="flex items-center text-muted-foreground">
                       <Clock className="h-4 w-4 mr-2" />
                       <span>{event.time}</span>
                     </div>
-                    <div className="flex items-center text-gray-600">
+                    <div className="flex items-center text-muted-foreground">
                       <MapPin className="h-4 w-4 mr-2" />
                       <span>{event.location}</span>
                     </div>
                   </div>
-                  <p className="text-gray-700">{event.description}</p>
+                  <p className="text-card-foreground">{event.description}</p>
                 </div>
               </div>
             ))}
@@ -161,18 +174,18 @@ const Events = () => {
       </section>
       
       {/* Past Events */}
-      <section className="py-16 bg-lvtc-off-white">
+      <section id="recent" className="py-16 bg-secondary/20">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-lvtc-forest-green mb-4">Recent Events</h2>
-            <p className="max-w-2xl mx-auto text-gray-600">
+          <div ref={pastRef} className="scroll-fade-in text-center mb-12">
+            <h2 className="text-3xl font-bold text-primary mb-4">Recent Events</h2>
+            <p className="max-w-2xl mx-auto text-muted-foreground">
               Highlights from our recent events and activities that showcase our vibrant campus life.
             </p>
           </div>
           
           <div className="space-y-8">
             {pastEvents.map((event, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div key={index} className="bg-card rounded-lg shadow-md overflow-hidden hover-lift">
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                   {event.image && (
                     <div className="lg:col-span-1">
@@ -185,16 +198,16 @@ const Events = () => {
                   )}
                   <div className={`p-6 ${event.image ? 'lg:col-span-2' : 'lg:col-span-3'}`}>
                     <div className="flex items-center justify-between mb-3">
-                      <span className="bg-lvtc-pale-green text-lvtc-forest-green px-3 py-1 rounded-full text-sm">
+                      <span className="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm">
                         {event.category}
                       </span>
-                      <div className="flex items-center text-gray-500 text-sm">
+                      <div className="flex items-center text-muted-foreground text-sm">
                         <Calendar className="h-4 w-4 mr-1" />
                         {new Date(event.date).toLocaleDateString('en-GB')}
                       </div>
                     </div>
-                    <h3 className="text-2xl font-bold text-lvtc-forest-green mb-3">{event.title}</h3>
-                    <div className="flex flex-wrap gap-4 mb-4 text-gray-600">
+                    <h3 className="text-2xl font-bold text-primary mb-3">{event.title}</h3>
+                    <div className="flex flex-wrap gap-4 mb-4 text-muted-foreground">
                       <div className="flex items-center">
                         <Clock className="h-4 w-4 mr-2" />
                         <span>{event.time}</span>
@@ -204,7 +217,7 @@ const Events = () => {
                         <span>{event.location}</span>
                       </div>
                     </div>
-                    <p className="text-gray-700 leading-relaxed">{event.description}</p>
+                    <p className="text-card-foreground leading-relaxed">{event.description}</p>
                   </div>
                 </div>
               </div>
@@ -214,11 +227,11 @@ const Events = () => {
       </section>
       
       {/* Event Categories */}
-      <section className="py-16 bg-white">
+      <section id="categories" className="py-16 bg-background">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-lvtc-forest-green mb-4">Event Categories</h2>
-            <p className="max-w-2xl mx-auto text-gray-600">
+          <div ref={categoriesRef} className="scroll-fade-in text-center mb-12">
+            <h2 className="text-3xl font-bold text-primary mb-4">Event Categories</h2>
+            <p className="max-w-2xl mx-auto text-muted-foreground">
               Our diverse range of events caters to different aspects of student development and community engagement.
             </p>
           </div>
@@ -246,10 +259,10 @@ const Events = () => {
                 icon: "🤝"
               }
             ].map((category, index) => (
-              <div key={index} className="bg-lvtc-off-white rounded-lg p-6 text-center">
+              <div key={index} className="bg-card rounded-lg p-6 text-center hover-lift">
                 <div className="text-4xl mb-4">{category.icon}</div>
-                <h3 className="text-lg font-bold text-lvtc-forest-green mb-2">{category.title}</h3>
-                <p className="text-gray-700 text-sm">{category.description}</p>
+                <h3 className="text-lg font-bold text-primary mb-2">{category.title}</h3>
+                <p className="text-card-foreground text-sm">{category.description}</p>
               </div>
             ))}
           </div>

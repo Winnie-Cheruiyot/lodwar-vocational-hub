@@ -1,41 +1,53 @@
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import ScrollNavigation from '@/components/ScrollNavigation';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Download, Calendar, Clock } from 'lucide-react';
 
 const Tenders = () => {
+  const headerRef = useScrollAnimation();
+  const tenderRef = useScrollAnimation();
+  const documentsRef = useScrollAnimation();
+  
+  const sections = ['hero', 'current-tender', 'documents', 'notice'];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-secondary/20">
       <Navbar />
+      <ScrollNavigation sections={sections} />
       
       <main className="container mx-auto px-4 py-8">
         {/* Header Section */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-foreground mb-4">
-            Tender Notices & Public Announcements
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Current tender opportunities and public notices from Lodwar Vocational Training Centre
-          </p>
+        <div id="hero" className="text-center mb-12">
+          <div ref={headerRef} className="scroll-fade-in">
+            <h1 className="text-4xl font-bold text-foreground mb-4">
+              Tender Notices & Public Announcements
+            </h1>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Current tender opportunities and public notices from Lodwar Vocational Training Centre
+            </p>
+          </div>
         </div>
 
         {/* Current Tender Notice */}
-        <div className="mb-8">
-          <Card className="border-primary/20 shadow-lg">
-            <CardHeader className="bg-primary/5">
-              <CardTitle className="flex items-center gap-2 text-primary">
-                <Calendar className="w-5 h-5" />
-                Current Tender Notice - August 2025
-              </CardTitle>
-              <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                <div className="flex items-center gap-1">
-                  <Clock className="w-4 h-4" />
-                  Deadline: 4th September 2025
+        <div id="current-tender" className="mb-8">
+          <div ref={tenderRef} className="scroll-fade-in">
+            <Card className="border-primary/20 shadow-lg hover-lift">
+              <CardHeader className="bg-primary/5">
+                <CardTitle className="flex items-center gap-2 text-primary">
+                  <Calendar className="w-5 h-5" />
+                  Current Tender Notice - August 2025
+                </CardTitle>
+                <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-1">
+                    <Clock className="w-4 h-4" />
+                    Deadline: 4th September 2025
+                  </div>
                 </div>
-              </div>
-            </CardHeader>
+              </CardHeader>
             <CardContent className="p-6">
               <div className="mb-6">
                 <h3 className="text-xl font-semibold mb-3 text-foreground">
@@ -109,50 +121,57 @@ const Tenders = () => {
                 </Button>
               </div>
             </CardContent>
-          </Card>
+            </Card>
+          </div>
         </div>
 
         {/* Tender Documents Display */}
-        <div className="grid md:grid-cols-2 gap-6 mb-8">
-          <Card>
-            <CardHeader>
-              <CardTitle>Tender Notice - Page 1</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <img 
-                src="/lovable-uploads/e77eaca3-e689-46df-8875-49cf1600c427.png" 
-                alt="Tender Notice Page 1" 
-                className="w-full h-auto rounded-lg border"
-              />
-            </CardContent>
-          </Card>
+        <div id="documents" className="grid md:grid-cols-2 gap-6 mb-8">
+          <div ref={documentsRef} className="scroll-fade-in">
+            <Card className="hover-lift">
+              <CardHeader>
+                <CardTitle>Tender Notice - Page 1</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <img 
+                  src="/lovable-uploads/e77eaca3-e689-46df-8875-49cf1600c427.png" 
+                  alt="Tender Notice Page 1" 
+                  className="w-full h-auto rounded-lg border"
+                />
+              </CardContent>
+            </Card>
+          </div>
           
-          <Card>
-            <CardHeader>
-              <CardTitle>Tender Notice - Page 2</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <img 
-                src="/lovable-uploads/f6d10bce-c741-4a6a-bcb5-dbaf67cd497a.png" 
-                alt="Tender Notice Page 2" 
-                className="w-full h-auto rounded-lg border"
-              />
-            </CardContent>
-          </Card>
+          <div className="scroll-fade-in">
+            <Card className="hover-lift">
+              <CardHeader>
+                <CardTitle>Tender Notice - Page 2</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <img 
+                  src="/lovable-uploads/f6d10bce-c741-4a6a-bcb5-dbaf67cd497a.png" 
+                  alt="Tender Notice Page 2" 
+                  className="w-full h-auto rounded-lg border"
+                />
+              </CardContent>
+            </Card>
+          </div>
         </div>
 
         {/* Important Notice */}
-        <Card className="border-destructive/20 bg-destructive/5">
-          <CardContent className="p-6">
-            <h3 className="font-semibold text-destructive mb-3">Important Information</h3>
-            <div className="text-sm space-y-2">
-              <p>• Women, Youths, and Persons living with Disabilities are encouraged to apply.</p>
-              <p>• Interested firms are required to submit pre-qualification documents based on their area of specialization.</p>
-              <p>• Documents should be enclosed in a sealed envelope clearly labeled with the tender number and description.</p>
-              <p>• Prequalification is not a guarantee of business opportunity. Bidders will be invited to submit quotations on a need basis depending on available opportunities.</p>
-            </div>
-          </CardContent>
-        </Card>
+        <div id="notice" className="scroll-fade-in">
+          <Card className="border-destructive/20 bg-destructive/5 hover-lift">
+            <CardContent className="p-6">
+              <h3 className="font-semibold text-destructive mb-3">Important Information</h3>
+              <div className="text-sm space-y-2">
+                <p>• Women, Youths, and Persons living with Disabilities are encouraged to apply.</p>
+                <p>• Interested firms are required to submit pre-qualification documents based on their area of specialization.</p>
+                <p>• Documents should be enclosed in a sealed envelope clearly labeled with the tender number and description.</p>
+                <p>• Prequalification is not a guarantee of business opportunity. Bidders will be invited to submit quotations on a need basis depending on available opportunities.</p>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
       </main>
 
       <Footer />
