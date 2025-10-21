@@ -31,6 +31,11 @@ const galleryImages = [
     src: "/lovable-uploads/32aef7f1-4ac8-4dce-aa48-4b0b91d9dedc.png",
     alt: "Electrical workshop training",
     caption: "Electrical Installation"
+  },
+  {
+    src: "/lovable-uploads/student-achievement-ceremony.jpg",
+    alt: "Students and instructor at achievement ceremony",
+    caption: "Student Achievement & Excellence"
   }
 ];
 
