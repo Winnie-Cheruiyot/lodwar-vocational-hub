@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/contexts/LanguageContext';
 import {
   Carousel,
   CarouselContent,
@@ -10,6 +11,7 @@ import {
 import Autoplay from "embla-carousel-autoplay";
 
 const Hero = () => {
+  const { t } = useLanguage();
   const plugin = React.useRef(
     Autoplay({ delay: 5000, stopOnInteraction: true })
   );
@@ -82,17 +84,17 @@ const Hero = () => {
       <div className="absolute inset-0 z-10 flex items-center justify-center">
         <div className="container mx-auto px-4 text-center text-white">
           <h1 className="text-3xl md:text-5xl font-bold mb-6">
-            Empowering Youth Through Skills Training
+            {t('hero.title')}
           </h1>
           <p className="text-lg md:text-xl max-w-3xl mx-auto mb-10">
-            Since 1976, Lodwar Vocational Training Centre has been transforming lives in Turkana County through quality technical and vocational education.
+            {t('hero.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center">
             <Button size="lg" className="bg-white text-lvtc-forest-green hover:bg-lvtc-pale-green" asChild>
-              <Link to="/courses">Explore Our Courses</Link>
+              <Link to="/courses">{t('hero.cta')}</Link>
             </Button>
             <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-lvtc-forest-green" asChild>
-              <Link to="/apply">Apply Now</Link>
+              <Link to="/apply">{t('hero.apply')}</Link>
             </Button>
           </div>
         </div>

@@ -4,8 +4,10 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const ChatWidget = () => {
+  const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -17,8 +19,8 @@ const ChatWidget = () => {
     
     if (!name || !email || !message) {
       toast({
-        title: "Missing Information",
-        description: "Please fill in all fields",
+        title: t('chat.missingInfo'),
+        description: t('chat.fillFields'),
         variant: "destructive"
       });
       return;
@@ -26,8 +28,8 @@ const ChatWidget = () => {
 
     // For now, just show success message
     toast({
-      title: "Message Sent!",
-      description: "We'll get back to you as soon as possible."
+      title: t('chat.sent'),
+      description: t('chat.response')
     });
 
     // Reset form
@@ -57,8 +59,8 @@ const ChatWidget = () => {
             <div className="flex items-center gap-3">
               <MessageCircle className="h-5 w-5" />
               <div>
-                <h3 className="font-semibold">Live Support</h3>
-                <p className="text-xs opacity-90">We're here to help</p>
+                <h3 className="font-semibold">{t('chat.title')}</h3>
+                <p className="text-xs opacity-90">{t('chat.subtitle')}</p>
               </div>
             </div>
             <button
@@ -74,12 +76,12 @@ const ChatWidget = () => {
           <div className="flex-1 p-4 overflow-y-auto bg-muted/20">
             <div className="bg-background p-3 rounded-lg shadow-sm mb-4">
               <p className="text-sm text-muted-foreground">
-                👋 Welcome! How can we help you today?
+                {t('chat.welcome')}
               </p>
             </div>
             <div className="bg-background p-3 rounded-lg shadow-sm">
               <p className="text-sm text-muted-foreground">
-                Send us a message and we'll respond as soon as possible.
+                {t('chat.prompt')}
               </p>
             </div>
           </div>
@@ -88,21 +90,21 @@ const ChatWidget = () => {
           <form onSubmit={handleSubmit} className="p-4 border-t border-border bg-background rounded-b-lg">
             <div className="space-y-3">
               <Input
-                placeholder="Your name"
+                placeholder={t('chat.name')}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 className="text-sm"
               />
               <Input
                 type="email"
-                placeholder="Your email"
+                placeholder={t('chat.email')}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="text-sm"
               />
               <div className="flex gap-2">
                 <Textarea
-                  placeholder="Type your message..."
+                  placeholder={t('chat.message')}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   className="text-sm resize-none"

@@ -4,9 +4,12 @@ import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ThemeToggle from '@/components/ThemeToggle';
+import LanguageSelector from '@/components/LanguageSelector';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -32,34 +35,36 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
             <Link to="/" className="text-foreground hover:text-primary transition-colors">
-              Home
+              {t('nav.home')}
             </Link>
             <Link to="/about" className="text-foreground hover:text-primary transition-colors">
-              About
+              {t('nav.about')}
             </Link>
             <Link to="/courses" className="text-foreground hover:text-primary transition-colors">
-              Courses
+              {t('nav.courses')}
             </Link>
             <Link to="/facilities" className="text-foreground hover:text-primary transition-colors">
-              Facilities
+              {t('nav.facilities')}
             </Link>
             <Link to="/events" className="text-foreground hover:text-primary transition-colors">
-              Events
+              {t('nav.events')}
             </Link>
             <Link to="/tenders" className="text-foreground hover:text-primary transition-colors">
-              Tenders
+              {t('nav.tenders')}
             </Link>
             <Link to="/contact" className="text-foreground hover:text-primary transition-colors">
-              Contact
+              {t('nav.contact')}
             </Link>
+            <LanguageSelector />
             <ThemeToggle />
             <Button className="bg-primary hover:bg-primary/90 text-primary-foreground" asChild>
-              <Link to="/apply">Apply Now</Link>
+              <Link to="/apply">{t('nav.apply')}</Link>
             </Button>
           </div>
           
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center space-x-2">
+            <LanguageSelector />
             <ThemeToggle />
             <Button variant="ghost" onClick={toggleMenu} className="text-primary">
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -76,52 +81,52 @@ const Navbar = () => {
                 className="text-foreground hover:bg-muted px-4 py-2 rounded-md"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Home
+                {t('nav.home')}
               </Link>
               <Link 
                 to="/about" 
                 className="text-foreground hover:bg-muted px-4 py-2 rounded-md"
                 onClick={() => setIsMenuOpen(false)}
               >
-                About
+                {t('nav.about')}
               </Link>
               <Link 
                 to="/courses" 
                 className="text-foreground hover:bg-muted px-4 py-2 rounded-md"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Courses
+                {t('nav.courses')}
               </Link>
               <Link 
                 to="/facilities" 
                 className="text-foreground hover:bg-muted px-4 py-2 rounded-md"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Facilities
+                {t('nav.facilities')}
               </Link>
               <Link 
                 to="/events" 
                 className="text-foreground hover:bg-muted px-4 py-2 rounded-md"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Events
+                {t('nav.events')}
               </Link>
               <Link 
                 to="/tenders" 
                 className="text-foreground hover:bg-muted px-4 py-2 rounded-md"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Tenders
+                {t('nav.tenders')}
               </Link>
               <Link 
                 to="/contact" 
                 className="text-foreground hover:bg-muted px-4 py-2 rounded-md"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Contact
+                {t('nav.contact')}
               </Link>
               <Button className="bg-primary hover:bg-primary/90 text-primary-foreground w-full" asChild>
-                <Link to="/apply">Apply Now</Link>
+                <Link to="/apply">{t('nav.apply')}</Link>
               </Button>
             </div>
           </div>
