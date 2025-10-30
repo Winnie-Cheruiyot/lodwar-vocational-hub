@@ -10,6 +10,7 @@ import ContactSection from '@/components/ContactSection';
 import CallToAction from '@/components/CallToAction';
 import Footer from '@/components/Footer';
 import ScrollNavigation from '@/components/ScrollNavigation';
+import ChatWidget from '@/components/ChatWidget';
 
 const Index = () => {
   return (
@@ -24,6 +25,7 @@ const Index = () => {
       <ContactSection />
       <CallToAction />
       <Footer />
+      <ChatWidget />
     </div>
   );
 };
