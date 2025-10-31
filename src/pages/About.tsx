@@ -501,7 +501,7 @@ const About = () => {
                 <div className="bg-primary/10 w-10 h-10 rounded-full flex items-center justify-center">
                   <Phone className="h-5 w-5 text-primary" />
                 </div>
-                <span className="text-muted-foreground">+254 123 456 789</span>
+                <span className="text-muted-foreground">+254716911279</span>
               </div>
               <div className="flex items-center gap-3">
                 <div className="bg-primary/10 w-10 h-10 rounded-full flex items-center justify-center">
