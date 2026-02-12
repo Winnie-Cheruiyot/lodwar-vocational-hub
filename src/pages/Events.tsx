@@ -16,38 +16,79 @@ const Events = () => {
   
   const upcomingEvents = [
     {
-      title: "Career Day 2025",
-      date: "2025-07-15",
+      title: "Career Guidance & Counselling Day",
+      date: "2026-03-15",
       time: "9:00 AM - 4:00 PM",
       location: "Main Campus",
-      description: "Meet with industry professionals, explore career opportunities, and learn about job placement programs.",
+      description: "Meet with industry professionals, explore career opportunities, receive personal career guidance, and learn about job placement programs.",
       category: "Career Development"
     },
     {
-      title: "Sports Day",
-      date: "2025-08-20",
+      title: "Madaraka Day Celebration",
+      date: "2026-06-01",
+      time: "8:00 AM - 2:00 PM",
+      location: "Main Hall",
+      description: "Celebrating Kenya's self-governance day with cultural performances, speeches, and patriotic activities.",
+      category: "National Holiday"
+    },
+    {
+      title: "World Environment Day",
+      date: "2026-06-05",
+      time: "7:00 AM - 3:00 PM",
+      location: "Campus Grounds & Community Sites",
+      description: "Tree planting, environmental awareness campaigns, and sustainability workshops in partnership with local environmental organizations.",
+      category: "Environmental Conservation"
+    },
+    {
+      title: "Sports Day 2026",
+      date: "2026-08-20",
       time: "8:00 AM - 5:00 PM",
       location: "Sports Grounds",
       description: "Annual inter-department sports competition featuring football, volleyball, athletics, and other sporting activities.",
       category: "Sports"
     },
     {
-      title: "Graduation Ceremony",
-      date: "2025-11-30",
+      title: "Mashujaa Day Celebration",
+      date: "2026-10-20",
+      time: "8:00 AM - 1:00 PM",
+      location: "Main Campus",
+      description: "Honouring Kenya's heroes and heroines with special ceremonies, guest speakers, and student presentations.",
+      category: "National Holiday"
+    },
+    {
+      title: "Graduation Ceremony 2026",
+      date: "2026-11-28",
       time: "10:00 AM - 2:00 PM",
       location: "Main Hall",
       description: "Celebrating the achievements of our graduating students and their transition to the workforce.",
       category: "Academic"
+    },
+    {
+      title: "Jamhuri Day Celebration",
+      date: "2026-12-12",
+      time: "8:00 AM - 1:00 PM",
+      location: "Main Campus",
+      description: "Celebrating Kenya's Independence Day with cultural activities, performances, and community engagement.",
+      category: "National Holiday"
     }
   ];
 
   const pastEvents = [
     {
+      title: "New Year Orientation 2026",
+      date: "2026-01-13",
+      time: "8:00 AM - 4:00 PM",
+      location: "Main Hall",
+      description: "Welcoming new and returning students for the 2026 academic year with orientation sessions, campus tours, and registration support.",
+      category: "Academic",
+      image: "/lovable-uploads/03c0b127-87c5-4479-80f2-8c203cba01b4.png"
+    },
+    {
       title: "Tree Planting Ceremony",
       date: "2025-11-20",
       time: "9:00 AM - 1:00 PM",
       location: "LVTC Campus Grounds",
-      description: "Environmental conservation initiative where students, staff, and community members participated in planting trees around the campus. This activity promotes environmental awareness and contributes to our green campus initiative.",
+      description: "Environmental conservation initiative where students, staff, and community members participated in planting trees around the campus.",
       category: "Environmental Conservation",
       image: "/lovable-uploads/6bf84f39-55f5-48b2-9918-9e23389a2aa4.png"
     },
@@ -56,7 +97,7 @@ const Events = () => {
       date: "2025-11-18",
       time: "8:00 AM - 5:00 PM",
       location: "Examination Halls",
-      description: "Students taking their annual examinations across all departments. The examination period demonstrates our commitment to maintaining high academic standards and proper assessment of student progress.",
+      description: "Students taking their annual examinations across all departments, demonstrating our commitment to maintaining high academic standards.",
       category: "Academic Assessment",
       image: "/lovable-uploads/62ec05ea-e1fa-4932-87bd-021456ee87e4.png"
     },
@@ -65,7 +106,7 @@ const Events = () => {
       date: "2025-11-10",
       time: "6:00 AM - 8:00 PM",
       location: "Lake Turkana - Eliye Springs",
-      description: "Students and staff enjoyed an educational and recreational trip to the beautiful Eliye Springs at Lake Turkana. This trip provided students with exposure to tourism potential in the region while offering relaxation and team building opportunities.",
+      description: "Students and staff enjoyed an educational and recreational trip to Eliye Springs at Lake Turkana, providing exposure to tourism potential in the region.",
       category: "Educational Trip",
       image: "/lovable-uploads/f06c8788-3fbd-4d0b-a6c5-4cb98288772b.png"
     },
@@ -74,7 +115,7 @@ const Events = () => {
       date: "2025-11-15",
       time: "10:00 AM - 3:00 PM",
       location: "Electrical & Plumbing Workshops",
-      description: "Japan International Cooperation Agency (JICA) visited our electrical and plumbing workshops in preparation for rolling out capacity building programs for water experts in water companies.",
+      description: "Japan International Cooperation Agency (JICA) visited our workshops in preparation for rolling out capacity building programs for water experts.",
       category: "International Partnership",
       image: "/lovable-uploads/4e0ae8b4-0381-468e-aba8-03e9dc9aee18.png"
     },
@@ -83,18 +124,9 @@ const Events = () => {
       date: "2025-10-25",
       time: "8:00 AM - 2:00 PM",
       location: "Various Community Sites",
-      description: "Extended tree planting program where LVTC community participated in environmental conservation efforts across different locations. The initiative involved proper tree planting techniques and community engagement.",
+      description: "Extended tree planting program where LVTC community participated in environmental conservation efforts across different locations.",
       category: "Community Outreach",
       image: "/lovable-uploads/47c8e222-49ec-4eec-b9c0-f3c4b3c2d8f3.png"
-    },
-    {
-      title: "Guidance and Counselling Workshop",
-      date: "2025-10-10",
-      time: "9:00 AM - 4:00 PM",
-      location: "Conference Hall",
-      description: "Professional development workshop for students on career guidance, personal development, and mental health awareness.",
-      category: "Student Welfare",
-      image: "/lovable-uploads/03c0b127-87c5-4479-80f2-8c203cba01b4.png"
     },
     {
       title: "Marketing and Outreach Program",
