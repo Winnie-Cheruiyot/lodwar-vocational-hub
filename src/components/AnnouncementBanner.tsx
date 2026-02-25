@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const announcements = [
-  { text: "📢 January 2026 Intake Now Open — Apply Today!", link: "/apply" },
+  { text: "📢 May 2026 Intake Now Open — Apply Today!", link: "/apply" },
   { text: "🎓 Graduation Ceremony — November 28, 2026", link: "/events" },
   { text: "🌍 World Environment Day Activities — June 5, 2026", link: "/events" },
   { text: "⚽ Annual Sports Day — August 20, 2026", link: "/events" },
