@@ -17,8 +17,8 @@ const CallToAction = () => {
           <Button size="lg" className="bg-white text-lvtc-forest-green hover:bg-lvtc-pale-green" asChild>
             <Link to="/apply">Apply Now</Link>
           </Button>
-          <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-lvtc-forest-green">
-            Download Brochure
+          <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-lvtc-forest-green" asChild>
+            <a href="/brochures/LVTC_COURSES.jpg" download="LVTC_Courses_Brochure.jpg">Download Brochure</a>
           </Button>
         </div>
       </div>
